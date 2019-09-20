@@ -1,6 +1,15 @@
 body {
     background: lightgrey;
 }
+
 .card {
     margin: 0 auto;
+}
+
+.border-dash {
+    border: dashed 2px lightgray;
+}
+
+.btn-round {
+    border-radius: 17px;
 }

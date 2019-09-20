@@ -9,26 +9,32 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-        <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css">
 
     <title>Password Generator</title>
 </head>
 
 <body>
     <div class="container w-50 bg-light mt-5">
-        <div class="row pt-5">
+        <div class="row py-5">
             <div class="col">
-                <h1 class="text-center text-secondary">Password Generator</h1>
+                <h1 class="text-center text-secondary pb-4">Password Generator</h1>
 
-                
+
                 <div class="card w-75">
                     <div class="card-title px-5 pt-5">
                         <h3 class="text-secondary">Generate a Password</h3>
                         <hr>
+                        <div class="form-group">
+                            <textarea class="form-control border-dash text-center" rows="5" id="password" placeholder="Your secure password"></textarea>
+                        </div>
+                        <hr>
+                        <button type="button" class="btn btn-danger btn-lg btn-round mb-5">Generate Password</button>
+                        <button type="button" class="btn btn-secondary btn-lg btn-round mb-5 float-right" disabled>Copy to Clipboard</button>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
