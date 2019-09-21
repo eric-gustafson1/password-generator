@@ -26,19 +26,70 @@
                         <h3 class="text-secondary">Generate a Password</h3>
                         <hr>
                         <div class="form-group">
-                            <textarea class="form-control border-dash text-center" rows="5" id="password"
+                            <textarea class="form-control border-dash text-center" rows="4" id="password"
                                 placeholder="Your secure password"></textarea>
                         </div>
                         <hr>
-                        <button type="button" id="generate" class="btn btn-danger btn-lg btn-round mb-5">Generate
-                            Password</button>
-                        <button type="button" id="copy" class="btn btn-secondary btn-lg btn-round mb-5 float-right"
-                            disabled>Copy to Clipboard</button>
+                        <div class="container">
+                            <div class="row">
+                                <p class="text-secondary">Select Password Criteria</p>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="range container p-2">
+                                        <label class="mr-4 text-secondary" for="range">Select between 8 - 128 characters</label>
+                                        <input type="range" name="range" min="8" max="128" value="24"
+                                            onchange="range.value=value">
+                                        <output class="text-secondary" id="range">24</output>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label text-secondary">
+                                            <input type="checkbox" class="form-check-input" value="">Special
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label text-secondary">
+                                            <input type="checkbox" class="form-check-input" value="">Numeric
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label text-secondary">
+                                            <input type="checkbox" class="form-check-input" value="">Uppercase
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label text-secondary">
+                                            <input type="checkbox" class="form-check-input" value="">Lowercase
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container mt-4">
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" id="generate" class="btn btn-danger btn-lg btn-round mb-5">Generate
+                                    Password</button>
+                                <button type="button" id="copy" class="btn btn-secondary btn-lg btn-round mb-5 float-right"
+                                    disabled>Copy to Clipboard</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
     </div>
 
 
