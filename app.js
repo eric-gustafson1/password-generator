@@ -35,7 +35,6 @@ function copyPassword() {
     copyText.select()
     document.execCommand("copy");
 
-    // alert('Password copied to clipboard')
     bootstrapSuccess.style.display = 'block'
 }
 
@@ -47,8 +46,15 @@ function generate() {
     bootstrapSuccess.style.display = 'none'
     bootstrapWarning.style.display = 'none'
 
+    // If no user criteria are selected then alert the user
     if(!specialCheck.checked && !numericCheck.checked && !uppercaseCheck.checked && !lowercaseCheck.checked) {
         bootstrapWarning.style.display = 'block'
+        copyBtn.disabled = true
+    }
+
+    // If at least one user criteria is selected then enable the Copy button
+    if(specialCheck.checked || numericCheck.checked || uppercaseCheck.checked || lowercaseCheck.checked) {
+        copyBtn.disabled = false
     }
 
 
@@ -82,8 +88,7 @@ function generate() {
     // Update the DOM
     pwdResult.textContent = resultArr
 
-    // Enable the Copy button
-    copyBtn.disabled = false
+    
 }
 
 // Event Handlers
