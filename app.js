@@ -10,6 +10,8 @@ let numericCheck = document.getElementById('numericBox')
 let uppercaseCheck = document.getElementById('uppercaseBox')
 let lowercaseCheck = document.getElementById('lowercaseBox')
 let generateBtn = document.getElementById('generate')
+let copyBtn = document.getElementById('copy')
+let passwordText = document.getElementById('password')
 
 let resultArr = []
 
@@ -20,29 +22,63 @@ function getRandomChar(list) {
     resultArr.push(list[Math.floor(Math.random() * list.length)])
 }
 
+function copyPassword() {
+    let copyText = ''
+    copyText = passwordText
+    copyText.select()
+    document.execCommand("copy");
 
-// Test the getRandomChar function
-// getRandomChar(special)
-// getRandomChar(numeric)
-// getRandomChar(uppercase)
-// getRandomChar(lowercase)
-// getRandomChar(uppercase)
-// getRandomChar(lowercase)
-// getRandomChar(uppercase)
-// getRandomChar(lowercase)
-// getRandomChar(uppercase)
-// getRandomChar(lowercase)
+    alert('Password copied to clipboard')
+
+}
+
+
+
+// Generate password function
+
+function generate() {
+
+    let workingList = ''
+    resultArr = []
+
+    if(specialCheck.checked) {
+        workingList += special
+    }
+
+    if(numericCheck.checked) {
+        workingList += numeric
+    }
+
+    if(uppercaseCheck.checked) {
+        workingList += uppercase
+    }
+
+    if(lowercaseCheck.checked) {
+        workingList += lowercase
+    }
+
+    console.log(workingList)
+
+    for(i=0; i < pwdLength.value; i++){
+        resultArr.push(getRandomChar(workingList))
+    }
+
+    resultArr = resultArr.join('')
+    
+    // Update the DOM
+    pwdResult.textContent = resultArr
+
+    // Enable the Copy button
+    copyBtn.disabled = false
+}
+
+
 
 
 
 
 
 // Test getting the range value
-console.log(pwdLength.value)
-console.log(specialCheck.checked)
-console.log(numericCheck.checked)
-console.log(uppercaseCheck.checked)
-console.log(lowercaseCheck.checked)
 
 // Work out how to validate a check box is checked
 
@@ -50,14 +86,6 @@ console.log(lowercaseCheck.checked)
 
 
 
-generateBtn.addEventListener('click', function(){
-    
-    console.log('in the event')
-})
+generateBtn.addEventListener('click', generate)
 
-console.log(resultArr.join(''))
-resultArr = resultArr.join('')
-console.log(resultArr)
-
-// Update the DOM
-pwdResult.textContent = resultArr
+copyBtn.addEventListener('click', copyPassword)
