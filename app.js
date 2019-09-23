@@ -3,7 +3,8 @@ const numeric = '1234567890'
 const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const lowercase = 'abcdefghijklmnopqrstuvwxyz'
 
-let bootstrapAlert = document.querySelector('.alert-success')
+let bootstrapSuccess = document.querySelector('.alert-success')
+let bootstrapWarning = document.querySelector('.alert-warning')
 let pwdResult = document.getElementById('password')
 let pwdLength = document.getElementById('range')
 let specialCheck = document.getElementById('specialBox')
@@ -16,8 +17,10 @@ let passwordText = document.getElementById('password')
 
 let resultArr = []
 
-// Hide Bootsrap 4 alert on load
-bootstrapAlert.style.display = 'none'
+// Hide Bootsrap 4 alerts on load
+bootstrapSuccess.style.display = 'none'
+bootstrapWarning.style.display = 'none'
+
 
 // Generate a random character from list input parameter
 function getRandomChar(list) {
@@ -33,7 +36,7 @@ function copyPassword() {
     document.execCommand("copy");
 
     // alert('Password copied to clipboard')
-    bootstrapAlert.style.display = 'block'
+    bootstrapSuccess.style.display = 'block'
 }
 
 
@@ -41,7 +44,12 @@ function copyPassword() {
 // Generate password function
 
 function generate() {
-    bootstrapAlert.style.display = 'none'
+    bootstrapSuccess.style.display = 'none'
+    bootstrapWarning.style.display = 'none'
+
+    if(!specialCheck.checked && !numericCheck.checked && !uppercaseCheck.checked && !lowercaseCheck.checked) {
+        bootstrapWarning.style.display = 'block'
+    }
 
 
     let workingList = ''
@@ -80,7 +88,6 @@ function generate() {
 
 // Event Handlers
 
-bootstrapAlert
 
 // Generate Password Button Click
 generateBtn.addEventListener('click', generate)
