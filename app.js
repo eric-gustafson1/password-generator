@@ -14,12 +14,17 @@ let lowercaseCheck = document.getElementById('lowercaseBox')
 let generateBtn = document.getElementById('generate')
 let copyBtn = document.getElementById('copy')
 let passwordText = document.getElementById('password')
+let checkboxes = document.querySelectorAll('.form-check-input')
+let workingList = ''
 
 let resultArr = []
 
 // Hide Bootsrap 4 alerts on load
 bootstrapSuccess.style.display = 'none'
 bootstrapWarning.style.display = 'none'
+
+// console.log(checkboxes)
+
 
 
 // Generate a random character from list input parameter
@@ -43,52 +48,89 @@ function copyPassword() {
 // Generate password function
 
 function generate() {
+    // Hide both bootstrap alerts
     bootstrapSuccess.style.display = 'none'
     bootstrapWarning.style.display = 'none'
 
+    // Reset the result array to empty
+    resultArr = []
+
+    // Create working list of characters based on User Criteria UI checkboxes
+    workingList = ''
+
+    // set loop count from Range UI
+    let loopCount = pwdLength.value
+    
+
+    // convert the nodelist to an array to parse with forEach
+    checkboxes = Array.from(checkboxes)
+
+    // look at each checkbox and add char set to working list if checked
+    // add one char from each selected char set to make sure at least one char is present
+    checkboxes.forEach(function (checkbox) {
+
+        if (checkbox.checked) {
+            if (checkbox.id === 'specialBox') {
+                workingList += special
+                getRandomChar(special)
+                loopCount--
+
+
+            } else if (checkbox.id === 'numericBox') {
+                workingList += numeric
+                getRandomChar(numeric)
+                loopCount--
+
+            } else if (checkbox.id === 'uppercaseBox') {
+                workingList += uppercase
+                getRandomChar(uppercase)
+                loopCount--
+
+            } else if (checkbox.id === 'lowercaseBox') {
+                workingList += lowercase
+                getRandomChar(lowercase)
+                loopCount--
+
+            } else {
+                bootstrapWarning.style.display = 'block'
+                copyBtn.disabled = true
+            }
+        }
+    })
+
     // If no user criteria are selected then alert the user
-    if(!specialCheck.checked && !numericCheck.checked && !uppercaseCheck.checked && !lowercaseCheck.checked) {
+    if (!specialCheck.checked && !numericCheck.checked && !uppercaseCheck.checked && !lowercaseCheck.checked) {
         bootstrapWarning.style.display = 'block'
         copyBtn.disabled = true
     }
 
     // If at least one user criteria is selected then enable the Copy button
-    if(specialCheck.checked || numericCheck.checked || uppercaseCheck.checked || lowercaseCheck.checked) {
+    if (specialCheck.checked || numericCheck.checked || uppercaseCheck.checked || lowercaseCheck.checked) {
         copyBtn.disabled = false
     }
 
 
-    let workingList = ''
-    resultArr = []
-
-    if(specialCheck.checked) {
-        workingList += special
-    }
-
-    if(numericCheck.checked) {
-        workingList += numeric
-    }
-
-    if(uppercaseCheck.checked) {
-        workingList += uppercase
-    }
-
-    if(lowercaseCheck.checked) {
-        workingList += lowercase
-    }
-
-    // Add random char to password array the amount of times the user selects from Range input
-    for(i=0; i < pwdLength.value; i++){
+    // Add random characters to password array the amount of times the user selects from Range input
+    for (i = 0; i < loopCount; i++) {
         resultArr.push(getRandomChar(workingList))
+    }
+
+    // Randomize/shuffle the array
+
+    for(let j = resultArr.length - 1; j > 0; j--) {
+        const k = Math.floor(Math.random() * j)
+        const temp = resultArr[j]
+        resultArr[j] = resultArr[k]
+        resultArr[k] = temp
     }
 
     // Use Join to remove commas from array
     resultArr = resultArr.join('')
-    
+
     // Update the DOM
     pwdResult.textContent = resultArr
 
-    
+
 }
 
 // Event Handlers
