@@ -70,22 +70,26 @@ function generate() {
     checkboxes.forEach(function (checkbox) {
 
         if (checkbox.checked) {
+
+            // if the special box is checked add special char set to workingList and add one special char to the reultArr.  Decrment loopCount
             if (checkbox.id === 'specialBox') {
                 workingList += special
                 getRandomChar(special)
                 loopCount--
 
-
+            // if the numeric box is checked add numeric char set to workingList and add one numeric char to the reultArr. Decrement loopcount
             } else if (checkbox.id === 'numericBox') {
                 workingList += numeric
                 getRandomChar(numeric)
                 loopCount--
 
+            // if the uppercase box is checked add uppercase char set to workingList and add one uppercase char to the reultArr. Decrement loopcount
             } else if (checkbox.id === 'uppercaseBox') {
                 workingList += uppercase
                 getRandomChar(uppercase)
                 loopCount--
 
+            // if the lowercase box is checked add lowercase char set to workingList and add one lowercase char to the reultArr. Decrement loopcount
             } else if (checkbox.id === 'lowercaseBox') {
                 workingList += lowercase
                 getRandomChar(lowercase)
@@ -116,6 +120,7 @@ function generate() {
     }
 
     // Randomize/shuffle the array
+    // Using Fisher-Yates Algorithm (https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb)
 
     for(let j = resultArr.length - 1; j > 0; j--) {
         const k = Math.floor(Math.random() * j)
@@ -134,8 +139,6 @@ function generate() {
 }
 
 // Event Handlers
-
-
 // Generate Password Button Click
 generateBtn.addEventListener('click', generate)
 
