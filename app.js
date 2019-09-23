@@ -15,13 +15,13 @@ let passwordText = document.getElementById('password')
 
 let resultArr = []
 
-
+// Generate a random character from list input parameter
 function getRandomChar(list) {
-    
-    console.log(list)
     resultArr.push(list[Math.floor(Math.random() * list.length)])
+
 }
 
+// Copy password to clipboard function
 function copyPassword() {
     let copyText = ''
     copyText = passwordText
@@ -29,7 +29,6 @@ function copyPassword() {
     document.execCommand("copy");
 
     alert('Password copied to clipboard')
-
 }
 
 
@@ -57,12 +56,12 @@ function generate() {
         workingList += lowercase
     }
 
-    console.log(workingList)
-
+    // Add random char to password array the amount of times the user selects from Range input
     for(i=0; i < pwdLength.value; i++){
         resultArr.push(getRandomChar(workingList))
     }
 
+    // Use Join to remove commas from array
     resultArr = resultArr.join('')
     
     // Update the DOM
@@ -72,20 +71,10 @@ function generate() {
     copyBtn.disabled = false
 }
 
+// Event Handlers
 
-
-
-
-
-
-// Test getting the range value
-
-// Work out how to validate a check box is checked
-
-
-
-
-
+// Generate Password Button Click
 generateBtn.addEventListener('click', generate)
 
+// Copy Password button Click
 copyBtn.addEventListener('click', copyPassword)
