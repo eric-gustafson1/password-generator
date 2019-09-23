@@ -3,6 +3,7 @@ const numeric = '1234567890'
 const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const lowercase = 'abcdefghijklmnopqrstuvwxyz'
 
+let bootstrapAlert = document.querySelector('.alert-success')
 let pwdResult = document.getElementById('password')
 let pwdLength = document.getElementById('range')
 let specialCheck = document.getElementById('specialBox')
@@ -14,6 +15,9 @@ let copyBtn = document.getElementById('copy')
 let passwordText = document.getElementById('password')
 
 let resultArr = []
+
+// Hide Bootsrap 4 alert on load
+bootstrapAlert.style.display = 'none'
 
 // Generate a random character from list input parameter
 function getRandomChar(list) {
@@ -28,7 +32,8 @@ function copyPassword() {
     copyText.select()
     document.execCommand("copy");
 
-    alert('Password copied to clipboard')
+    // alert('Password copied to clipboard')
+    bootstrapAlert.style.display = 'block'
 }
 
 
@@ -36,6 +41,8 @@ function copyPassword() {
 // Generate password function
 
 function generate() {
+    bootstrapAlert.style.display = 'none'
+
 
     let workingList = ''
     resultArr = []
@@ -72,6 +79,8 @@ function generate() {
 }
 
 // Event Handlers
+
+bootstrapAlert
 
 // Generate Password Button Click
 generateBtn.addEventListener('click', generate)
