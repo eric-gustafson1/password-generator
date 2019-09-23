@@ -137,7 +137,7 @@ function generate() {
 
 // Function to give UI feedback on password length
 function passwordFeedback() {
-
+    
     // Convert the nodelist to an array to parse with forEach
     checkboxes = Array.from(checkboxes)
     checkCount = 0
@@ -150,7 +150,7 @@ function passwordFeedback() {
         }
     })
 
-    if (pwdLength.value < 24 && checkCount < 2) {
+    if (pwdLength.value < 24 && checkCount < 3 ) {
         rangeEval.textContent = 'Weak Password'
         rangeEval.style.color = 'red'
 
