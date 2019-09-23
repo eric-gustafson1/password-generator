@@ -16,12 +16,12 @@
 </head>
 
 <body>
-    <div class="alert alert-success alert-dismissible">
+    <div class="alert alert-success alert-dismissible text-center">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Success!</strong> Password copied to clipboard
     </div>
 
-    <div class="alert alert-warning alert-dismissible">
+    <div class="alert alert-warning alert-dismissible text-center">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Warning!</strong> Select at least one password criteria
     </div>
@@ -43,28 +43,33 @@
                         <hr>
                         <div class="container">
                             <div class="row">
-                                <p class="text-secondary">Select Password Criteria</p>
+                                <p class="text-secondary">Select Password Length:</p>
 
                             </div>
 
                             <div class="row">
                                 <div class="col">
                                     <div class="range container p-2">
-                                        <label class="mr-4 text-secondary" for="range">Select between 8 - 128
-                                            characters</label>
-                                        <input type="range" name="range" min="8" max="128" value="24"
+                                        <!-- <label class="mr-4 text-secondary" for="range">Select between 8 - 128
+                                            characters</label> -->
+                                        <input class="range" type="range" name="range" min="8" max="128" value="24"
                                             onchange="range.value=value">
                                         <output class="text-secondary" id="range">24</output>
+                                        <p class="range-eval"></p>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row">
+                                <p class="text-secondary">Select Character Set:</p>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col">
                                     <div class="form-check-inline">
                                         <label class="form-check-label text-secondary">
-                                            <input type="checkbox" class="form-check-input" value="" id="specialBox"
-                                                checked>Special
+                                            <input type="checkbox" class="form-check-input" value=""
+                                                id="specialBox">Special
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
@@ -75,14 +80,14 @@
                                     </div>
                                     <div class="form-check-inline">
                                         <label class="form-check-label text-secondary">
-                                            <input type="checkbox" class="form-check-input" value="" id="uppercaseBox"
-                                                checked>Uppercase
+                                            <input type="checkbox" class="form-check-input" value=""
+                                                id="uppercaseBox">Uppercase
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
                                         <label class="form-check-label text-secondary">
-                                            <input type="checkbox" class="form-check-input" value="" id="lowercaseBox"
-                                                checked>Lowercase
+                                            <input type="checkbox" class="form-check-input" value=""
+                                                id="lowercaseBox">Lowercase
                                         </label>
                                     </div>
 
