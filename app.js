@@ -179,6 +179,3 @@ copyBtn.addEventListener('click', copyPassword)
 
 // Card click events
 card.addEventListener('click', passwordFeedback)
-
-// Password length feedback
-// rangeSlider.addEventListener('click', passwordFeedback)
