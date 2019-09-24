@@ -17,5 +17,14 @@ body {
      width: 90%;
  }
 
+ @media screen and (max-width: 768px) {
+    button {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+
+    }
+    
+}
  
 
