@@ -63,33 +63,30 @@ function generate() {
     // set loop count from Range UI
     let loopCount = pwdLength.value
 
-    // // Convert the nodelist to an array to parse with forEach
-    // checkboxes = Array.from(checkboxes)
-
     // Look at each checkbox and add char set to working list if checked
     checkboxes.forEach(function (checkbox) {
 
         if (checkbox.checked) {
 
-            // if the special box is checked add the special char set to workingList and add one special char to the reultArr.  Decrment loopCount
+            // if the special box is checked add the special char set to workingList and add one special char to the resultArr.  Decrment loopCount
             if (checkbox.id === 'specialBox') {
                 workingList += special
                 getRandomChar(special)
                 loopCount--
 
-                // if the numeric box is checked add the numeric char set to workingList and add one numeric char to the reultArr. Decrement loopcount
+                // if the numeric box is checked add the numeric char set to workingList and add one numeric char to the resultArr. Decrement loopcount
             } else if (checkbox.id === 'numericBox') {
                 workingList += numeric
                 getRandomChar(numeric)
                 loopCount--
 
-                // if the uppercase box is checked add the uppercase char set to workingList and add one uppercase char to the reultArr. Decrement loopcount
+                // if the uppercase box is checked add the uppercase char set to workingList and add one uppercase char to the resultArr. Decrement loopcount
             } else if (checkbox.id === 'uppercaseBox') {
                 workingList += uppercase
                 getRandomChar(uppercase)
                 loopCount--
 
-                // if the lowercase box is checked add the lowercase char set to workingList and add one lowercase char to the reultArr. Decrement loopcount
+                // if the lowercase box is checked add the lowercase char set to workingList and add one lowercase char to the resultArr. Decrement loopcount
             } else if (checkbox.id === 'lowercaseBox') {
                 workingList += lowercase
                 getRandomChar(lowercase)
@@ -140,6 +137,8 @@ function passwordFeedback() {
     
     // Convert the nodelist to an array to parse with forEach
     checkboxes = Array.from(checkboxes)
+
+    // checkcount variable to store the count of checked checkboxes
     checkCount = 0
 
     // Count the number of checked char set boxes
