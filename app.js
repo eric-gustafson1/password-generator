@@ -134,7 +134,7 @@ function generate() {
 
 // Function to give UI feedback on password length
 function passwordFeedback() {
-    
+
     // Convert the nodelist to an array to parse with forEach
     checkboxes = Array.from(checkboxes)
 
